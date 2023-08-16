@@ -1,0 +1,118 @@
+:root {
+    --success-dark: #80daa5;
+    --violet: #7b24aa;
+    --violet-dark: #9933cc; 
+    --aqua: cornflowerblue;
+}
+
+*, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.content {
+    min-height: 40rem;
+}
+
+#header {
+    width: 100%;
+    margin: 0;
+    /* background-image: linear-gradient(to left, #49c5f6, #ff2aef) !important; */
+    background-color: var(--aqua) !important;
+}
+
+.btn {
+    font-size: 1em !important;
+}
+
+.btn-info {
+    background-color: hsl(204, 86%, 53%) !important;
+    border-color: 5px solid hsl(305.17deg 83.11% 42.31% / 55%) !important;
+}
+
+.btn-info:hover {
+    background-color: var(--violet) !important;
+}
+
+.btn-aqua, .btn-outline-dark{
+    border: none !important;
+    background: linear-gradient(to bottom right, #5f656a, #4b5758);
+    color: white !important;
+}   
+
+.btn-outline-dark:hover {
+    background-color: #000 !important;
+}
+
+.btn-dark:hover {
+    background-color: rgb(82, 97, 109) !important;
+    color: rgb(246, 241, 241) !important;
+}
+
+.btn-aqua {
+    background-color: cornflowerblue !important;
+}
+
+.btn-outline-info, .btn-outline-primary:hover {
+    color: white !important;
+}
+
+.btn-light, #btn-register:hover {
+    color: #1c1717 !important;
+    background-color: #fff !important;
+}
+.btn-light:hover {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    color: white !important;
+    background-color: #6a63bf !important;
+}
+/* Thêm các kiểu cơ bản cho vùng chứa và ảnh */
+.slide-show {
+    overflow: hidden;
+    width: 100%; 
+    background-color: #F2F2F2
+}
+  
+.horizontal-scroll {
+    display: flex;
+    width: fit-content; /* Điều này làm cho ảnh rộng gấp đôi vùng chứa để tạo hiệu ứng cuộn ngang */
+    animation: scroll 10s linear infinite; /* Thiết lập animation cho cuộn ngang liên tục */
+}
+
+.image-container {
+   flex-shrink: 0; /* Ngăn các phần tử co lại khi không đủ không gian */
+   width: 150%;
+   overflow: hidden;
+}
+  
+.image-container img {
+   width: 100%;
+   height: auto;
+   object-fit: cover;
+}
+
+@keyframes scroll {
+    0%{
+      transform: translateX(90%);
+    }
+    100%{
+        transform: translateX(1%);
+    }
+    
+}
+
+.background-image{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMrfD6cuj3G8OoqXOpEBVzRc2P_02gbsKZQQ&usqp=CAU');
+    background-size: cover;
+    z-index: -11;
+}
+
+
+  
