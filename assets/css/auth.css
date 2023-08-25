@@ -1,21 +1,40 @@
 :root {
     --btn-success: hsl(141, 53%, 53%);
-    --btn-info: hsl(204, 86%, 53%); 
+    --btn-info: hsl(203, 47%, 25%);
+    --btn-brown: #4b2a2a; 
+    --aqua: cornflowerblue;
 }
 body{
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--btn-info);
-    background-image: url(http://bit.ly/2gPLxZ4);;
+    background-size: cover; */
+    font-family: 'Poppins', sans-serif !important;
+}
+.field-icon {
+    float: right;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+  }
+#header {
+    width: 100%;
+    margin: 0;
+    background-color: var(--aqua) !important;
 }
 
 #card-auth {
-    opacity:  0.75;
-    background-color: #281f1f;
-    border-radius: 55px 10px 80px !important;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;;
+    height: 50vh; 
+    margin: auto;
+    margin-top: 5rem;
+    background-color: black;
+    border-radius: 30px !important;
+    box-shadow: rgba(70, 43, 46, 0.48) 6px 2px 16px 0px, rgba(80, 49, 55, 0.8) -6px -2px 16px 0px;
+}
+
+.btn-light, #btn-register:hover, #btn-login:hover {
+    color: #1c1717 !important;
+    background-color: #fff !important;
 }
 
 .form-control {
@@ -23,15 +42,26 @@ body{
 }
 
 .btn-register {
-    background-color: #b051cb !important;
+    background-color: var(--btn-brown) !important;
 }
 
-#form-register, #aaa, label {
-    opacity: 1 !important;
-}
 
 .test:hover {
-    color: #000 !important;
+    color: #812c30 !important;
+}
+
+.btn-login {
+    color: white;
+    background-color: var(--btn-brown);
+}
+
+.btn-login:hover {
+    background-color: rgb(79, 34, 47);
+    color: white;
+}
+
+.btn-register:hover {
+    background-color: beige;
 }
 
 

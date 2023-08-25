@@ -19,7 +19,6 @@
 #header {
     width: 100%;
     margin: 0;
-    /* background-image: linear-gradient(to left, #49c5f6, #ff2aef) !important; */
     background-color: var(--aqua) !important;
 }
 
@@ -27,23 +26,27 @@
     font-size: 1em !important;
 }
 
+.btn-danger {
+    background-color: #f14668 !important;
+}
+
 .btn-info {
     background-color: hsl(204, 86%, 53%) !important;
     border-color: 5px solid hsl(305.17deg 83.11% 42.31% / 55%) !important;
 }
 
-.btn-info:hover {
+.btn-info:hover{
     background-color: var(--violet) !important;
 }
 
-.btn-aqua, .btn-outline-dark{
+.btn-aqua {
     border: none !important;
     background: linear-gradient(to bottom right, #5f656a, #4b5758);
     color: white !important;
 }   
 
-.btn-outline-dark:hover {
-    background-color: #000 !important;
+.btn-detail {
+    background-color: #899192 !important;
 }
 
 .btn-dark:hover {
@@ -59,10 +62,11 @@
     color: white !important;
 }
 
-.btn-light, #btn-register:hover {
+.btn-light, #btn-register:hover, #btn-login:hover {
     color: #1c1717 !important;
     background-color: #fff !important;
 }
+
 .btn-light:hover {
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     color: white !important;
@@ -87,10 +91,13 @@
    overflow: hidden;
 }
   
-.image-container img {
-   width: 100%;
-   height: auto;
-   object-fit: cover;
+.card {
+    height: 100%;
+}
+
+#card-img {
+  width: 100%;
+  height: 180px; /* Điều chỉnh kích thước ảnh theo ý muốn */
 }
 
 @keyframes scroll {
@@ -100,7 +107,47 @@
     100%{
         transform: translateX(1%);
     }
+}
+
+#btn-card:hover { 
+    background-color: white;
+    color:#7a62e3 !important;
+}
+
+#btn-card {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #4f47ee;
+}
+
+.dropdown-toggle::after {
+    content: none !important;
+}
+
+@media (max-width: 500px){
+    .nav-item a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
     
+    .nav-item a span {
+      display: none;
+    }
+
+    #card-text {
+        font-size: 1em !important;
+    }
+}
+
+.item-li:hover {
+    color: rgb(243, 248, 243) !important;
+    background-color: #7a62e3 !important;
+}
+
+.btn-logout:hover {
+    color: #fff !important;
+    background-color: #f14668 !important;
 }
 
 .background-image{
@@ -114,5 +161,26 @@
     z-index: -11;
 }
 
+.card-text{
+    font-size: 10px;
+}
+
+#box-shadow {
+    box-shadow: rgba(0, 0, 0, 0.35) 10px 5px 15px;
+}
+
+#text-shadow {
+    text-shadow: 1px 10px 18px rgb(46, 8, 236);
+}
+
+#dropdownUser3 {
+    box-shadow: rgba(0, 0, 0, 0.35) 10px 5px 15px;
+    padding: 11.5px 5.5px;
+    border: none;
+}
+
+#card-text {
+    font-size: 0.8em;
+}
 
   

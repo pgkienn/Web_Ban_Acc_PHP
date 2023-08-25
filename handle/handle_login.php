@@ -9,14 +9,13 @@ $result = json_decode($request);
 $username = trim($db->real_escape_string($result->username));
 $password = md5(trim($db->real_escape_string($result->password)));
 
-
-if(!isset($username) || empty($username) || !isset($password) || empty($password)){
+if(!isset($username) || empty($username) || !isset($password) || empty($password)) {
     Message::errorClose("Tài Khoản Hoặc Mật Khẩu Không Được Để Trống!", $db);
 }
 
-$kq = $db->query("SELECT * FROM users WHERE username = '$username' AND password = '$password'");
+$kq = $db->query("SELECT * FROM users WHERE username = '$username' AND password = '$password' AND status = 1");
 
-if($kq->num_rows == 0){
+if($kq->num_rows == 0) {
     Message::errorClose("Sai Tài Khoản Hoặc Mật Khẩu!", $db);
 }
 

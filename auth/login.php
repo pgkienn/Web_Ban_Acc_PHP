@@ -1,40 +1,55 @@
+<?php
+require_once("../middleware/logger.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Đăng Nhập</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
-    <style>
-        body {
-            width:100%;
-            background-image: url("https://nhadepso.com/wp-content/uploads/2023/01/khampha-50-anh-anime-thien-nhien-dep-lang-man-lam-hinh-nen_4.jpg");
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" /> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 <body>
-    <div class="container">
-        <form  
-            method="POST" id="form-login"
-            style="width: 40rem; height: 300px; margin: 0 auto; margin-top: 90px;"
-        >
-            <div class="h2 text-light text-center"> Đăng Nhập </div>
+    <header id="header">
+        <div class="container">
+            <?php
+                require_once("../views/layout/header.php")
+            ?>
+        </div>
+    </header>
+    <div class="container" style="height: 70vh;">
+        <div class="row" style="min-height: 75vh; margin: 0 !important; padding:0;">
+            <div class="col-10 col-sm-6 col-lg-4 card d-flex" id="card-auth">
+                <form  
+                    method="POST" id="form-login"
+                >
+                    <div class="h1 text-light text-center p-3"> Đăng Nhập </div>
 
-            <label for="" class="form-label text-light h5">Tên Đăng Nhập:</label>
-            <input type="text" class="form-control me-5" name="username" id="username">
+                    <input class="form-control display-1 mt-4" placeholder="Tài khoản *" type="text"  name="username" id="username">
+                    <input class="form-control display-1 mt-4" placeholder="Mật khẩu *" type="password" name="password" id="password">
+                    <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
 
-            <label for="" class="form-label text-light h5 mt-3">Mật Khẩu:</label>
-            <input class="form-control" name="password" type="password" id="password">
-
-            <div class="text-center d-grid gap-2">
-                <button type="submit" class="btn btn-success mt-3">
-                    ĐĂNG NHẬP
-                </button>
+                    <div class="text-center d-grid gap-2">
+                        <button type="submit" class="btn border mt-3 mb-3 text-light" onclick="Toastify()">
+                            ĐĂNG NHẬP
+                        </button>
+                    </div>
+                    <a class="mt-4 text-light test" href="./register.php" style="text-decoration: none;">Bạn chưa có tài khoản ?</a>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
+    <footer class="footer mt-5">
+        <?php
+            require_once("../views/layout/footer.php")
+        ?>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
 
         const form = getId("form-login");
@@ -47,7 +62,6 @@
 
         form.addEventListener("submit", (e) => {
             e.preventDefault();
-
             fetch("/handle/handle_login.php", {
                 method: "POST",
                 body: JSON.stringify({
@@ -60,11 +74,39 @@
             })
             .then(res => res.json())
             .then(data => {
-                alert(data.message)
-                if(data.status === "success") {
-                    window.location.href = "/../";
+                if(data.status === "success"){
+                    window.location.href = "../";
+                }
+                if(data.status === "error"){
+                    Toastify({
+                        text: data.message,
+                        duration: 3000,
+                        close: true,
+                        style: {
+                            background: "linear-gradient(to right, #eb3349, #f45c43)",
+                        },
+                    }).showToast();
                 }
             })
+            .catch(error => {
+                console.log('Error', error);
+            })
+        })
+
+        const btn = document.querySelector(".toggle-password");
+        const input = document.querySelector("#password");
+        btn.addEventListener('click', (c) => {
+            if(input.value != "") {
+                if(input.type == "password") {
+                    input.setAttribute("type", "text");
+                    btn.classList.remove("fa-eye-slash");
+                    btn.classList.add("fa-eye");
+                } else {
+                    input.setAttribute("type", "password");
+                    btn.classList.remove("fa-eye");
+                    btn.classList.add("fa-eye-slash");
+                }
+            }
         })
     </script>
 </body>
