@@ -61,34 +61,44 @@
     </div>
 </div>
 <script> 
-        const mua = document.getElementById("btn-mua")
-        const idProduct = document.getElementsByName("idPro");
-        console.log(idProduct);
-        mua.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            fetch("../../../handle/handle_buy.php", {
-                method: "POST",
-                body: JSON.stringify({
-                    id: idProduct[0].id
-                }),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-            .then(res => res.json())
-            .then(data => {
-                if(data.status === "error") {
-                    Toastify({  
-                        text: data.message,
-                        duration: 3000,
-                        close: true,
-                        style: {
-                            background: "#f14668",
-                        },
-                    }).showToast();
-                } 
-                
-            })
-        });
-        </script>
+    const mua = document.getElementById("btn-mua")
+    const idProduct = document.getElementsByName("idPro");
+    //console.log(idProduct);
+    mua.addEventListener("click", (e) => {
+        e.preventDefault();
+        fetch("../../../handle/handle_buy.php", {
+            method: "POST",
+            body: JSON.stringify({
+                id: idProduct[0].id
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.status === "error") {
+                Toastify({  
+                    text: data.message,
+                    duration: 3000,
+                    close: true,
+                    style: {
+                        background: "#f14668",
+                    },
+                }).showToast();
+            }
+            if(data.status === "success") {
+                Toastify({  
+                    text: data.message,
+                    duration: 3000,
+                    close: true,
+                    style: {
+                        background: "#4CAF50",
+                    },
+                }).showToast();
+                window.location.href = "./views/users/public/history_accounts.php";
+            }
+            
+        })
+    });
+</script>

@@ -6,9 +6,6 @@ session_start();
 $db = new mysqli("localhost", "root", "", "web_acc");
 $products = $db->query("SELECT * FROM products WHERE status = 1");
 
-if(isset($_SESSION['user'])) {
-    //print_r($_SESSION['user']);
-}
 $db->close();
 ?>  
 <!DOCTYPE html>

@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once("../../../middleware/not_logger.php");
 $name_page = "Trang Cá Nhân";
 $db = new mysqli("localhost", "root", "", "web_acc");
@@ -8,7 +7,6 @@ $idUser = $_SESSION['user']['id'];
 
 $history_acc = $db->query("SELECT T.id as idGD, T.created_at as timeGD, P.code as maSP, PD.username as taikhoan, PD.password as matkhau FROM transactions T JOIN products P ON T.product_id = P.id JOIN users U ON T.user_id = U.id JOIN product_details PD ON P.id = PD.product_id WHERE U.id = 6 LIMIT 0, 25;");
 
-echo(gettype($history_acc));
 
 $db->close();
 ?>
@@ -35,16 +33,19 @@ $db->close();
             </div>
         </header>
         <div class="content container">
-            <div class="row">
-                <?php
-                
-                ?>
+            <div class="">
+            <?php
+                require_once("../../layout/his_accounts.php");
+            ?>
             </div>
+            
         </div>
         <footer>
+            <div class="footer">
             <?php
                 require_once("../../layout/footer.php")
             ?>
+            </div>
         </footer>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     </div>

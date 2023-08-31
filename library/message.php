@@ -9,7 +9,7 @@ class Message {
     }
 
     public static function success(string $message) {
-        self::showMessage($message);
+        self::showMessage($message, "success");
     }
 
     public static function errorClose(string $message, mysqli $db) {
